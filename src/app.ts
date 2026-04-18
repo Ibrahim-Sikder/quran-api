@@ -8,7 +8,7 @@ import { quranRoutes } from './modules/quran/quran.route';
 const app = new Hono();
 
 app.use('*', cors({
-    origin: ['http://localhost:3001', "https://quran-web-application-three.vercel.app"],
+    origin: ['http://localhost:3001', "https://quran-web-application-three.vercel.app", "https://quran-web-application-mocha.vercel.app"],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type'],
     exposeHeaders: ['Content-Length'],
