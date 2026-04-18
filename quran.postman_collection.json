@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "d60763ad-d3fd-4080-a79c-0fa5600bf239",
+		"name": "quran",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27838892",
+		"_collection_link": "https://warped-robot-331405.postman.co/workspace/quran-api~8a6a9eb3-8771-49b7-9756-56530ecfe733/collection/27838892-d60763ad-d3fd-4080-a79c-0fa5600bf239?action=share&source=collection_link&creator=27838892"
+	},
+	"item": [
+		{
+			"name": "quran",
+			"item": [
+				{
+					"name": "GET All Surahs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/quran/surahs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quran",
+								"surahs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "id,asc",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "id,name,englishName",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Single Surah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/quran/surah/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quran",
+								"surah",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Single Ayah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/quran/surah/1/ayah/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quran",
+								"surah",
+								"1",
+								"ayah",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEARCH in Translation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/quran/search?q=forgiveness&page=2&limit=20&sort=chapter,asc&fields=chapter,verse,translation,arabic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"quran",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "forgiveness"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "chapter,asc"
+								},
+								{
+									"key": "fields",
+									"value": "chapter,verse,translation,arabic"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
