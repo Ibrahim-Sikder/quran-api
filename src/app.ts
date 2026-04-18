@@ -7,9 +7,8 @@ import { quranRoutes } from './modules/quran/quran.route';
 
 const app = new Hono();
 
-// Middleware
 app.use('*', cors({
-    origin: ['http://localhost:3000', 'https://your-frontend-url.vercel.app'],
+    origin: ['http://localhost:3001',],
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type'],
     exposeHeaders: ['Content-Length'],
@@ -17,7 +16,7 @@ app.use('*', cors({
     credentials: true,
 }));
 
-// Global error handler middleware
+
 app.use('*', async (c, next) => {
     try {
         await next();
@@ -32,7 +31,6 @@ app.use('*', async (c, next) => {
     }
 });
 
-// Routes
 app.get('/', (c) => {
     return sendResponse(c, {
         statusCode: httpStatus.OK,
