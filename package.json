@@ -9,6 +9,7 @@
     "build": "bun build ./src/server.ts --outdir ./dist --target bun"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.14",
     "@hono/zod-validator": "^0.2.0",
     "hono": "^4.0.0",
     "http-status": "^2.1.0"
