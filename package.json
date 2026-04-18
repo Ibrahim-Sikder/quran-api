@@ -6,7 +6,7 @@
     "dev": "bun --hot src/server.ts",
     "dev:watch": "bun --watch src/server.ts",
     "start": "bun run src/server.ts",
-    "build": "bun build src/server.ts --outdir dist"
+    "build": "bun build ./src/server.ts --outdir ./dist --target bun"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.0",
