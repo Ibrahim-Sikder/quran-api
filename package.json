@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "vercel-build": "bun build ./src/server.ts --outdir ./dist --target bun",
-    "dev": "bun --hot src/server.ts",
+    "vercel-build": "tsc",
+    "dev": "vercel-dev",
     "dev:watch": "bun --watch src/server.ts",
     "start": "bun run src/server.ts",
     "build": "bun build ./src/server.ts --outdir ./dist --target bun"
