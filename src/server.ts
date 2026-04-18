@@ -1,12 +1,15 @@
-import { serve } from 'bun';
+import { serve } from '@hono/node-server';
 import app from './app';
 
-const PORT = process.env.PORT || 8000;
+const portEnv = process.env.PORT;
+
+const port =
+    portEnv && !Number.isNaN(Number(portEnv))
+        ? Number(portEnv)
+        : 8000;
+console.log(`Server running on http://localhost:${port}`);
 
 serve({
     fetch: app.fetch,
-    port: PORT,
+    port,
 });
-
-console.log(`🚀 Quran API is ss running on http://localhost:${PORT}`);
-console.log(`📖 API Docs: http://localhost:${PORT}/api/quran/surahs`);

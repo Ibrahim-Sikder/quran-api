@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "vercel-build": "tsc",
-    "dev": "vercel-dev",
+    "dev": "bun --hot src/server.ts",
     "dev:watch": "bun --watch src/server.ts",
-        "start": "node dist/index.js",
+    "start": "bun run src/server.ts",
     "build": "bun build ./src/server.ts --outdir ./dist --target bun"
   },
   "dependencies": {
