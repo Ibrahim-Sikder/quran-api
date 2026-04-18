@@ -3,13 +3,14 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "strict": true,
-    "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "resolveJsonModule": true,
+    "rootDir": ".",
+    "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["bun-types"],
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -17,4 +18,3 @@
   "include": ["src/**/*", "api/**/*"],
   "exclude": ["node_modules", "dist"]
 }
-
