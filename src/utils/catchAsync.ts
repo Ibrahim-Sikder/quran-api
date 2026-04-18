@@ -5,7 +5,6 @@ export const catchAsync = (fn: (c: Context, next: Next) => Promise<any>) => {
         try {
             await fn(c, next);
         } catch (err) {
-            // Pass error to error handler
             return next();
         }
     };

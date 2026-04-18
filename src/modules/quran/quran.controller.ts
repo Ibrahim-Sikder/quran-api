@@ -15,7 +15,6 @@ const getAllSurahs = async (c: Context) => {
 
         const result = await quranServices.getAllSurahs(query);
 
-        // IMPORTANT: Return the response
         return sendResponse(c, {
             statusCode: httpStatus.OK,
             success: true,
@@ -24,7 +23,6 @@ const getAllSurahs = async (c: Context) => {
             data: result.surahs,
         });
     } catch (err) {
-        // IMPORTANT: Return the response
         return sendResponse(c, {
             statusCode: httpStatus.INTERNAL_SERVER_ERROR,
             success: false,

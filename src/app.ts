@@ -31,23 +31,6 @@ app.use('*', async (c, next) => {
     }
 });
 
-app.get('/', (c) => {
-    return sendResponse(c, {
-        statusCode: httpStatus.OK,
-        success: true,
-        message: 'Quran API is running',
-        data: {
-            version: '1.0.0',
-            endpoints: [
-                'GET /api/quran/surahs',
-                'GET /api/quran/surah/:id',
-                'GET /api/quran/surah/:id/ayahs',
-                'GET /api/quran/search?q=keyword',
-                'GET /api/quran/surah/:surahId/ayah/:verseId',
-            ],
-        },
-    });
-});
 
 app.route('/api/quran', quranRoutes);
 

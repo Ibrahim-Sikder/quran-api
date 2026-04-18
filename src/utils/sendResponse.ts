@@ -16,7 +16,6 @@ type TResponse<T> = {
 };
 
 const sendResponse = <T>(c: Context, data: TResponse<T>) => {
-    // Return the response explicitly
     return c.json(
         {
             success: data.success,

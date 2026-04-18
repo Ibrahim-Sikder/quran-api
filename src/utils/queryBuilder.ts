@@ -90,8 +90,6 @@ export class QueryBuilder {
             totalPage,
         };
     }
-
-    // Getter method to access private query
     getResults() {
         return this.query;
     }
