@@ -1,0 +1,21 @@
+{
+  "name": "quran-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/server.ts",
+    "dev:watch": "bun --watch src/server.ts",
+    "start": "bun run src/server.ts",
+    "build": "bun build src/server.ts --outdir dist"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.2.0",
+    "hono": "^4.0.0",
+    "http-status": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/http-status": "^1.1.2",
+    "typescript": "^5.0.0"
+  }
+}
