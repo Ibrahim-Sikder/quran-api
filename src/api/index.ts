@@ -1,24 +1,13 @@
-// Vercel serverless function এর জন্য প্রয়োজনীয় ইম্পোর্ট
+import { quranRoutes } from '@/modules/quran/quran.route';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { handle } from '@hono/node-server/vercel';
 
 
-import httpStatus from 'http-status';
-import sendResponse from '@/utils/sendResponse';
-import { quranRoutes } from '@/modules/quran/quran.route';
-
-
-
-// একটি নতুন Hono app তৈরি করুন (এটা আপনার src/app.ts এর মতোই)
 const app = new Hono();
 
-// CORS middleware কনফিগার করুন
+// CORS middleware
 app.use('*', cors({
-    origin: [
-        'http://localhost:3001',  // লোকাল ডেভেলপমেন্ট
-        'https://your-domain.vercel.app'  // প্রোডাকশন ডোমেইন (আপনার ডোমেইন দিয়ে replace করুন)
-    ],
+    origin: '*',
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type'],
     exposeHeaders: ['Content-Length'],
@@ -26,25 +15,23 @@ app.use('*', cors({
     credentials: true,
 }));
 
-// গ্লোবাল এরর হ্যান্ডলার - আপনার src/app.ts থেকে কপি করা
+// Error handler
 app.use('*', async (c, next) => {
     try {
         await next();
     } catch (err) {
         console.error('Global error:', err);
-        return sendResponse(c, {
-            statusCode: httpStatus.INTERNAL_SERVER_ERROR,
+        return c.json({
             success: false,
             message: 'Internal server error',
-            data: null,
-        });
+            data: null
+        }, 500);
     }
 });
 
-// রুট এন্ডপয়েন্ট - আপনার src/app.ts থেকে কপি করা
+// Root endpoint
 app.get('/', (c) => {
-    return sendResponse(c, {
-        statusCode: httpStatus.OK,
+    return c.json({
         success: true,
         message: 'Quran API is running',
         data: {
@@ -60,23 +47,19 @@ app.get('/', (c) => {
     });
 });
 
-// quran রাউটস সংযোগ করুন - আপনার src/app.ts থেকে কপি করা
+// Quran routes
 app.route('/api/quran', quranRoutes);
 
-// 404 হ্যান্ডলার - আপনার src/app.ts থেকে কপি করা
+// 404 handler
 app.all('*', (c) => {
-    return sendResponse(c, {
-        statusCode: httpStatus.NOT_FOUND,
+    return c.json({
         success: false,
         message: 'Route not found',
-        data: null,
-    });
+        data: null
+    }, 404);
 });
 
-// ⭐ ভেরসেলের জন্য সবচেয়ে গুরুত্বপূর্ণ অংশ ⭐
-// Vercel serverless function এর জন্য handler export করতে হবে
-export const GET = handle(app);
-export const POST = handle(app);
-export const PUT = handle(app);
-export const DELETE = handle(app);
-export const PATCH = handle(app);
+// Vercel handler - সরাসরি app.fetch ব্যবহার করুন
+export default async function handler(request: Request) {
+    return app.fetch(request);
+}
