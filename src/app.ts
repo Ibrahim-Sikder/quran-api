@@ -51,7 +51,6 @@ app.get('/', (c) => {
 
 app.route('/api/quran', quranRoutes);
 
-// 404 handler
 app.all('*', (c) => {
     return sendResponse(c, {
         statusCode: httpStatus.NOT_FOUND,
