@@ -10,30 +10,13 @@ app.use('*', cors({
     origin: '*',
     allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowHeaders: ['Content-Type'],
-    exposeHeaders: ['Content-Length'],
-    maxAge: 600,
-    credentials: true,
 }));
-
-// Error handler
-app.use('*', async (c, next) => {
-    try {
-        await next();
-    } catch (err) {
-        console.error('Global error:', err);
-        return c.json({
-            success: false,
-            message: 'Internal server error',
-            data: null
-        }, 500);
-    }
-});
 
 // Root endpoint
 app.get('/', (c) => {
     return c.json({
         success: true,
-        message: 'Quran API is running',
+        message: 'Quran API is running on Vercel',
         data: {
             version: '1.0.0',
             endpoints: [
@@ -41,7 +24,6 @@ app.get('/', (c) => {
                 'GET /api/quran/surah/:id',
                 'GET /api/quran/surah/:id/ayahs',
                 'GET /api/quran/search?q=keyword',
-                'GET /api/quran/surah/:surahId/ayah/:verseId',
             ],
         },
     });
@@ -59,7 +41,7 @@ app.all('*', (c) => {
     }, 404);
 });
 
-// Vercel handler - সরাসরি app.fetch ব্যবহার করুন
+// Vercel serverless function handler
 export default async function handler(request: Request) {
     return app.fetch(request);
 }

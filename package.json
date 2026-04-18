@@ -3,20 +3,20 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bun --hot src/server.ts",
-    "build": "tsc",
     "vercel-build": "tsc",
-    "start": "node dist/server.js"
+      "dev": "bun --hot src/server.ts",
+    "dev:watch": "bun --watch src/server.ts",
+    "start": "bun run src/server.ts",
+    "build": "bun build ./src/server.ts --outdir ./dist --target bun"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.0",
-    "@hono/zod-validator": "^0.2.0",
     "hono": "^4.0.0",
+    "@hono/node-server": "^1.13.0",
     "http-status": "^2.1.0"
   },
   "devDependencies": {
-    "@types/http-status": "^1.1.2",
-    "@vercel/node": "^3.0.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "@vercel/node": "^3.0.0"
   }
 }
